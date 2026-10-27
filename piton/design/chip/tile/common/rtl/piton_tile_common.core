@@ -1,4 +1,4 @@
-CAPI=2:
+CAPI=3:
 name: openpiton::piton_tile_common:0.1
 description: Top-level Piton Tile common files
 

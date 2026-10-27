@@ -1,4 +1,4 @@
-CAPI=2:
+CAPI=3:
 name: openpiton::io_xbar_components:0.1
 description: Dynamic node components
 

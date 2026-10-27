@@ -1,4 +1,4 @@
-CAPI=2:
+CAPI=3:
 name: openpiton::sparc_exu:0.1
 description: Execution unit containing register file(IRF), execution control (ECL), ALU, shifting (SHFT).
 
@@ -48,16 +48,16 @@ targets:
     default:
         filesets: [rtl]
     pickle:
-        default_tool: icarus
+        flow: sim
         filesets: [rtl]
         toplevel: [sparc_exu_wrap]
-        tools:
-            icarus:
-                iverilog_options: [-g 2001 -E]
+        flow_options:
+            tool: icarus
+            iverilog_options: [-g 2001 -E]
     verify:
-        default_tool: icarus
+        flow: sim
         filesets: [rtl]
         toplevel: [sparc_exu_wrap]
-        tools:
-            icarus:
-                iverilog_options: [-g 2001]
+        flow_options:
+            tool: icarus
+            iverilog_options: [-g 2001]

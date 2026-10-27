@@ -1,4 +1,4 @@
-CAPI=2:
+CAPI=3:
 name: openpiton::chip_fpga_bridge_tb:0.1
 description: chip_fpga_bridge testbench
 
@@ -23,13 +23,14 @@ parameters:
 
 targets:
     sim:
-        default_tool: icarus
+        flow: sim
         filesets: [tb_files]
         toplevel: [bridge_out_tb]
         parameters: [VERBOSITY]
-        tools:
-            icarus:
-                iverilog_options: [-g 2001]
-            vcs:
-                vcs_options: [-timescale=1ps/1ps]
+        flow_options:
+            tool: icarus
+            iverilog_options: [-g 2001]
+            # For VCS, which CAPI=2 picked with `--tool=vcs`. Pass `--tool=vcs`
+            # after the core name instead; Icarus Verilog ignores them.
+            vcs_options: [-timescale=1ps/1ps]
                 

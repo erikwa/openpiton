@@ -1,4 +1,4 @@
-CAPI=2:
+CAPI=3:
 name: openpiton::dmbr:0.1
 description: Top-level Piton includes
 

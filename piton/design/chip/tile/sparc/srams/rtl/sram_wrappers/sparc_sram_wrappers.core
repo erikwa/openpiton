@@ -1,4 +1,4 @@
-CAPI=2:
+CAPI=3:
 name: openpiton::sparc_sram_wrappers:0.1
 description: Top-level SPARC Core cache SRAM wrappers
 

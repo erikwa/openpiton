@@ -1,6 +1,6 @@
-CAPI=2:
+CAPI=3:
 name: openpiton::exu_bw_r_irf_common:0.1
-description: 
+description: EXU Register file
 
 filesets:
     rtl:

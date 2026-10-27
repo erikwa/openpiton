@@ -1,4 +1,4 @@
-CAPI=2:
+CAPI=3:
 name: openpiton::chipset:0.1
 description: OpenPiton Tile
 
@@ -12,12 +12,15 @@ filesets:
         depend:
             - openpiton::piton_chipset_include
             - openpiton::fpga_bridge
-            - "tool_vivado? (openpiton::memory_controller)"
+            - if: "flow == 'vivado'"
+              add: [openpiton::memory_controller]
             - openpiton::noc_axilite_bridge
-            - "tool_vivado? (openpiton::noc_sd_bridge)"
+            - if: "flow == 'vivado'"
+              add: [openpiton::noc_sd_bridge]
             - openpiton::io_ctrl
             - openpiton::io_xbar
-            - "tool_vivado? (openpiton::oled)"
+            - if: "flow == 'vivado'"
+              add: [openpiton::oled]
         file_type: verilogSource-2001
 
 targets:
@@ -25,21 +28,21 @@ targets:
         filesets: [rtl]
         generate: [pyhp_preprocess]
     pickle:
-        default_tool: icarus
+        flow: sim
         filesets: [rtl]
         generate: [pyhp_preprocess]
         toplevel: [chipset]
-        tools:
-            icarus:
-                iverilog_options: [-g 2001 -E]
+        flow_options:
+            tool: icarus
+            iverilog_options: [-g 2001 -E]
     verify:
-        default_tool: icarus
+        flow: sim
         filesets: [rtl]
         generate: [pyhp_preprocess]
         toplevel: [chipset]
-        tools:
-            icarus:
-                iverilog_options: [-g 2001]
+        flow_options:
+            tool: icarus
+            iverilog_options: [-g 2001]
 generate:
     pyhp_preprocess:
         generator: pyhp_preprocess_gen
